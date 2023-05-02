@@ -1,0 +1,22 @@
+.link  {
+    display: block;
+    text-align: center;
+    margin-bottom: 50px;
+    text-decoration: none;
+    background-color: white;
+}
+
+.link-image {
+    width: 50px;
+    vertical-align: middle;
+}
+
+.link-text{
+    display: inline-block;
+    text-align: left;
+    width: 23%;
+    font-size: 40px;
+    margin-left: 30px;
+    vertical-align: middle;
+}
+
