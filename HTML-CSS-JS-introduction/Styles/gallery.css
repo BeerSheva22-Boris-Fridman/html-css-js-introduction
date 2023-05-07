@@ -60,6 +60,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 5s;
+   
 }
 
 .details-img {
@@ -90,6 +92,8 @@ main {
     text-decoration: none;
     
 }
+
+
 
 .thumbnails-list {
     list-style: none;
@@ -139,6 +143,29 @@ main {
     height: var(--thumbnails-title-height);
 }
 
+.hidden {
+    display: none;
+}
+
+
+
+.hide-button {
+    font-size: 0.8em;
+    position: absolute;
+    top: 4vh;
+    right: 5vw;
+    background-color: transparent;
+}
+
+.details-section.hidden {
+    background-color: bisque;
+}
+
+.point {
+    transform: scale(0.001);
+    transition: 0s;
+}
+
 @media (min-width: 650px) {
      :root {
         /* --thumbnails-img-width: 20vw;
@@ -161,66 +188,43 @@ main {
         justify-content: start;
         margin-left: 7vw;
     }
+    
+    .hidden+.thumbnails-section .thumbnails-list {
+        flex-wrap: wrap;
+        max-height: 80vh;
+        flex-direction: row;
+        outline-color: #ffffff;
+        outline-style: solid;
+        outline-width: 6px;
+        justify-content: start;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        justify-content: space-around;
+    }
+   
+    
     main {
         flex-direction: row-reverse;
         justify-content: start;
     } 
-
-  
-
+    
+    
+    
     .details-img {
         width: 50vw;
         height: 40vw;
         border-radius: 20%;
-     
+        
     }
     .details-section {
         margin: auto;
     }
-
+    
     .details-title {
-           font-size: 1.3em;
+        font-size: 1.3em;
     }
     
-    /* main {
-        flex-direction: row-reverse;
-        margin-left: 20px;
-        margin-bottom: 80px;
-    } 
-
-    .thumbnails-item {
-        min-width: 20vw;
-        max-width: 20vw;
-        margin-top: 0.5vh;
-        overflow: hidden;
-    }
-
-    .details-img {
-        width: 40vw;
-        height: auto;
-        margin-left: 5vw;
-        margin-right: 5vw;
-    }
-
-    .details-title {
-        left: 20vw;
-        bottom: 2vh;
-    }
- 
-    .thumbnails-list {
-        max-height: 70vh;
-    }
-
-    .thumbnails-section{
-        width: auto;
-        height: auto;
-    }
-
-    .details-section{
-        margin-top: 0;
-    }
-     */
-
+   
 }
 @media (min-width: 1000px) {
     .details-img {
@@ -234,5 +238,9 @@ main {
     }
    html {
     font-size: 1.5rem;
+   }
+   .hidden .thumbnails-list {
+    flex-direction: row;
+
    }
 }
