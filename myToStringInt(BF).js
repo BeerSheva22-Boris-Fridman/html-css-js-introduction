@@ -50,7 +50,7 @@ function myToStringInt(number, radix) {
         result = char + result;
         numberFloored = Math.floor(numberFloored / radix);
     }
-    while (numberFloored > 0);
+    while (numberFloored != 0);
     
     if (number < 0) {
         return "-" + result;
@@ -64,3 +64,5 @@ const number = -14556;
 const radix = 16;
 const result = myToStringInt(number, radix);
 console.log(result);
+
+
