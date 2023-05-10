@@ -35,27 +35,18 @@ function myToStringInt(number, radix) {
     }
     let numberFloored = Math.floor(number);
     numberFloored = Math.abs(number);
-
-
     let result = '';
-
     do {
         const remainder = numberFloored % radix;
         let char;
-        if (remainder < 10) {
-            char = String(remainder);
-        } else {
-            char = String.fromCharCode(remainder + 87);
-        }
+        char = remainder < 10 ? String(remainder) : String.fromCharCode(remainder + 87);
         result = char + result;
         numberFloored = Math.floor(numberFloored / radix);
     }
     while (numberFloored != 0);
-    
     if (number < 0) {
         return "-" + result;
     }
-
     return result;
 }
 
