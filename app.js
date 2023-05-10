@@ -52,7 +52,7 @@ function getOrderedList(array) {
      return `<ol>${listItems}</ol>`;
     }
     
-    const array = [1, 2, 3];
+    const array = ["First", "Second", "Third"];
     console.log(getOrderedList(array));
     // using the map method, I convert each element of the array into a string <li>, 
     //then using the join method, I join the strings without a separator. 
