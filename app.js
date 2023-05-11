@@ -76,12 +76,12 @@ function getOrderedList(array) {
     return `<ol class="ol">${listItems.join('')}</ol>`;
    }
 
-//    bodyId.innerHTML = getSquareOrderedList(getArrayRandomIntNumbers(10, 0, 2))
+    bodyId.innerHTML = getSquareOrderedList(getArrayRandomIntNumbers(10, 0, 2))
 
-function getMatrixRandomIntNumbers (rows, colums, min, max, minInclusive = true, maxIninclusive = false) {
+function getMatrixRandomIntNumbers (rows, colums, min, max) {
     let arr = [];
     arr.length = rows;
-    return [...arr].map(() => getArrayRandomIntNumbers(colums, min, max, minInclusive, maxIninclusive));
+    return [...arr].map(() => getArrayRandomIntNumbers(colums, min, max));
 }
 
 console.log(getMatrixRandomIntNumbers(20,20,0,4))
