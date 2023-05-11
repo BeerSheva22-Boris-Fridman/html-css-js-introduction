@@ -54,6 +54,34 @@ function getOrderedList(array) {
     
     const array = ["First", "Second", "Third"];
     console.log(getOrderedList(array));
+
+//Explanation in english:
     // using the map method, I convert each element of the array into a string <li>, 
     //then using the join method, I join the strings without a separator. 
     //then in the return I use a template literal to wrap the result in an <ol> tag
+
+//Explanation in hebru:
+    // ахшав ани асбир эйх шита гетордерлист овед
+    // еш ли мештанэ лист айтемс , бе мештанэ ха зе еш а коль элементим ме аррэй им тег ли. 
+    // ани мештамеш метотодим мап вэ джоин, вэ ахар ках ани мештамеш темплейт литерал кеде лехасиф тег ол
+
+   // задание классная работа 11/05/22
+   // вместо 1 и 0 нарисовать квадратики единица - черный цвет, ноль -белый
+
+
+   function getSquareOrderedList(array) {
+    const listItems = array.map(item => {
+    return item == 1 ? `<li class="li"><div class="black-square"></div></li>`: `<li class="li"><div class="white-square"><div/></li>`;
+    })
+    return `<ol class="ol">${listItems.join('')}</ol>`;
+   }
+
+//    bodyId.innerHTML = getSquareOrderedList(getArrayRandomIntNumbers(10, 0, 2))
+
+function getMatrixRandomIntNumbers (rows, colums, min, max, minInclusive = true, maxIninclusive = false) {
+    let arr = [];
+    arr.length = rows;
+    return [...arr].map(() => getArrayRandomIntNumbers(colums, min, max, minInclusive, maxIninclusive));
+}
+
+console.log(getMatrixRandomIntNumbers(20,20,0,4))
