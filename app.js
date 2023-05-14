@@ -76,7 +76,7 @@ function getOrderedList(array) {
     return `<ol class="ol">${listItems.join('')}</ol>`;
    }
 
-    bodyId.innerHTML = getSquareOrderedList(getArrayRandomIntNumbers(10, 0, 2))
+    // bodyId.innerHTML = getSquareOrderedList(getArrayRandomIntNumbers(10, 0, 2))
 
 function getMatrixRandomIntNumbers (rows, colums, min, max) {
     let arr = [];
@@ -84,4 +84,24 @@ function getMatrixRandomIntNumbers (rows, colums, min, max) {
     return [...arr].map(() => getArrayRandomIntNumbers(colums, min, max));
 }
 
-console.log(getMatrixRandomIntNumbers(20,20,0,4))
+console.log(getMatrixRandomIntNumbers(8,8,0,1))
+
+//****************** методы Splise и Splise ************************
+
+//const array = [1,2,3,4,5,6]
+
+// ***** Splise *****
+// либо удаляем, если передаем два аргумента, первый - это индекс с которого, второй сколько элементов начиная с индекса удалим
+// либо добавляем, тогда передаем 3 параметра, первые два такие же, третий - это что мы поставим на новое место вместо удаленного
+
+// array.splice(0,3)
+// array.splice(0,3,4)
+// console.log(array)
+
+// ***** Slise *****
+// данный метод создает копию массива, то есть никак не меняет исходный массив. в параметрах указываем два числа: 
+// первое - индекс откуда, второе -  сколько элементов начиная с указанного индекса
+// чтобы увидеть результат работы метода, необходимо записать его в отдельную переменную
+
+let arrayCopy = array.slice(0,2)
+console.log(arrayCopy)
