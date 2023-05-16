@@ -1,87 +1,218 @@
-// const ar = [];
-// ar[10] = 100;
-// ar [0] = 'hello';
-// ar[3] = [];
-// ar.length = 0;
-// ar[0] = 1;
-// const ar2 = [[1,6], [2,0,0], [3, 1]];
-// //add at array end
-// ar[ar.length] = 10;
-// let s = ar.push(...ar2);
-// ar[10];
-// //method "map"
+// const person = {name: 'Vasya', id: 123, birthday: 1990, 
+// adress: {country: 'Israel', city: 'Rehovot'}};
 
-// let ar1 =[];
-// ar1.push(1, 2, 3);
-// ar1.length = 100;
-// ar1 = [...ar1]
+//factory function - function that create objects
 
-// ar1.length = 5;
-// //console.log(ar1)
-
-
-
-//написать функцию которая возвращае случайное целое число в заданном диапазоне
-function getRandomIntNumber(min, max, minInclusive = true, maxIninclusive = false) {
-    min = Math.round(min);
-    max = Math.round(max);
-    
-    if (!minInclusive) min++;
-    if (maxIninclusive) max++;
-    return min < max ? Math.round(Math.random() * (max - min) + min) : undefined;
-    
+function createPerson(id, name, birthday, country, city) {
+    // long entry:
+    // return {id: id, name: name, birthday: birthday, 
+    //     adress: {country: country, city: city}}
+    // short entry:
+    return { id, name, birthday, adress: { country, city } };
 }
-// console.log(getRandomIntNumber(2.2, 10.5));
 
-//написать функцию которая вернет массив случайных чисел используя метод map и getRandomIntNumber, которую мы реализуем выше
-function getArrayRandomIntNumbers(nNumbers, min, max, minInclusive = true, maxIninclusive = false) {
-    const arr = [];
-    arr.length = nNumbers;
-    return [...arr].map(() => getRandomIntNumber(min, max, minInclusive, maxIninclusive));
+const person1 = createPerson(123, 'Vasya', 1999, 'Israel', 'Rehovot');
+const person2 = createPerson(123, 'Vasya', 1999, 'Israel', 'Rehovot');
+console.log(`person1=person2 is ${person1 == person2}`); // "==" - is same, here we have different links
+
+//how to get for the filds of the object? 
+
+// we have two ways:
+// way 1 
+
+console.log(person1.name)
+
+// way 2
+
+// console.log(person1.id); 
+// console.log(person1[id]);//here arror, becouse no brakets
+// console.log(person1["id"]); //this way work
+
+function printKeyValue(person, key) {
+    //console.log(`key $ {key} is ${person.key}`)
+    console.log(`key ${key} is ${person[key]}`)
 }
-// console.log(getArrayRandomIntNumbers(5, 1, 10));
 
-//     //returns HTML string of element <ol> with items form 
-//     //a given array elements
-//     //example: input- [1, 2, 3]
-//     //output "<ol><li>1</li><li>2</li><li>3</li></ol>"
-// console.log([1, 2, 3].join(''))
- 
-function getOrderedList(array) {
-     const listItems = array.map(item => `<li>${item}</li>`).join('');
-     return `<ol>${listItems}</ol>`;
-    }
-    
-    const array = ["First", "Second", "Third"];
-    console.log(getOrderedList(array));
+printKeyValue(person1, 'name');
+//responce: key name is Vasya
 
-//Explanation in english:
-    // using the map method, I convert each element of the array into a string <li>, 
-    //then using the join method, I join the strings without a separator. 
-    //then in the return I use a template literal to wrap the result in an <ol> tag
+printKeyValue(person1, 'adress.city');
+//responce: undefind
 
-//Explanation in hebru:
-    // ахшав ани асбир эйх шита гетордерлист овед
-    // еш ли мештанэ лист айтемс , бе мештанэ ха зе еш а коль элементим ме аррэй им тег ли. 
-    // ани мештамеш метотодим мап вэ джоин, вэ ахар ках ани мештамеш темплейт литерал кеде лехасиф тег ол
+printKeyValue(person1, 'adress.city');
+//responce: undefind
 
-   // задание классная работа 11/05/22
-   // вместо 1 и 0 нарисовать квадратики единица - черный цвет, ноль -белый
+console.log(Object.keys(person1))
+//responce: [ 'id', 'name', 'birthday', 'adress' ]
+
+//--------------------------------------------------------//
+//--------------------------------------------------------//
+
+function displayKeyValue(person, key1, key2) {
+    if (key2) {
+        console.log(`key1 ${key1}, key2 ${key2}, value is ${person[key1][key2]}`)
+    } else {
+        console.log(`key ${key1} is ${person[key1]}`)
+    };
+
+}
+displayKeyValue(person1, 'adress', 'country');
+//Method 'keys' of Object returns array of key values
+console.log("keys", Object.keys(person1));
+//Method 'values' of Object returns array of values
+console.log("values", Object.values(person1));
+//Method 'entries' of Object returns array of arrays with key as first element and value is the second one
+console.log("entries", Object.entries(person1));
+const x = {};
+x["ab"] = 10;
+x["ab"]++;
+
+console.log(x["ab"]);
+//  function displayOccurrences(array) {
+//     //array of strings
+//     //display strings with their coccurency counts in the descending order of the counts
+//     //if counts are equaled then in ascending string values order
+//  }
+//  displayOccurrences(arr) 
+// const object ={};
+
+// arr.forEach(item => {
+//     //chek if this item 
+//     if (object[item]){
+//         object[item]++
+//     } else {
+//         object[item] = 1
+//     }
+// })
+
+//  /*lmn -> 3
+//    a -> 2
+//    ab -> 2
+//    c -> 1
+//    d -> 1 */  
 
 
-   function getSquareOrderedList(array) {
-    const listItems = array.map(item => {
-    return item == 1 ? `<li class="li"><div class="black-square"></div></li>`: `<li class="li"><div class="white-square"><div/></li>`;
+
+// const occurrences = {};
+
+// // Инициализация пустого объекта, который будет содержать количество вхождений каждого элемента массива
+// // Ключи объекта будут элементами массива, а значения будут соответствовать количеству вхождений
+// // Начальное значение объекта occurrences: {}
+// // occurrences = {}
+
+// arr.forEach(item => {
+//   // Перебор каждого элемента массива arr
+//   // item - текущий элемент массива
+
+//   if (occurrences[item]) {
+//     // Если ключ item уже существует в объекте occurrences (не является undefined, null, 0 или false)
+//     // Увеличиваем количество вхождений элемента, если ключ уже существует
+//     occurrences[item] += 1;
+//   } else {
+//     // Если ключ item не существует в объекте occurrences
+//     // Инициализируем количество вхождений элемента, если ключ не существует
+//     occurrences[item] = 1;
+//   }
+// });
+
+// // После выполнения цикла forEach объект occurrences будет содержать количество вхождений каждого элемента массива
+// // Например, после выполнения цикла occurrences = { "lmn": 3, "ab": 2, "c": 1, "d": 1, "a": 2 }
+
+// const sortedOccurrences = Object.entries(occurrences)
+//   // Преобразуем объект occurrences в массив пар ключ-значение
+//   // Например, Object.entries(occurrences) = [ ["lmn", 3], ["ab", 2], ["c", 1], ["d", 1], ["a", 2] ]
+//   .sort(([keyA, valueA], [keyB, valueB]) => {
+//     // Сортируем массив пар ключ-значение
+
+//     if (valueA === valueB) {
+//       // Если количество вхождений одинаковое, сортируем по алфавиту
+
+//       return keyA.localeCompare(keyB);
+//       // Метод localeCompare() сравнивает строки keyA и keyB лексикографически (по алфавиту)
+//       // Возвращает отрицательное число, если keyA предшествует keyB
+//       // Возвращает положительное число, если keyA следует за keyB
+//       // Возвращает 0, если keyA и keyB равны
+//     }
+
+//     // Если количество вхождений разное, сортируем по убыванию количества вхождений
+
+//     return valueB - valueA;
+//     // Возвращаем разницу valueB и valueA
+//     // Положительное значение: valueB больше valueA
+//     // Отрицательное значение: valueA больше valueB
+//     // 0: valueA и valueB равны
+//   })
+//   .reduce((sortedObj, [key, value]) => {
+//     // Преобразуем отсортированный массив пар ключ-значение обратно в объект
+
+//     sortedObj[key] = value; // Преобразование отсортированного массива пар ключ-значение обратно в объект
+//     return sortedObj;
+//   }, {});
+
+
+
+function displayOccurrences(arr) {
+    const occurrences = {};
+
+    arr.forEach(item => {
+        occurrences[item] ? occurrences[item]++ : occurrences[item] = 1;
     })
-    return `<ol class="ol">${listItems.join('')}</ol>`;
-   }
+/* тоже самое через reduce:
 
-    bodyId.innerHTML = getSquareOrderedList(getArrayRandomIntNumbers(10, 0, 2))
+const occurrences arr.reduce((obj, s) => {
+    obj[s]=obj[s] ? obj[s] + 1 : 1;
+    return obj;
+    }, {})
+*/
 
-function getMatrixRandomIntNumbers (rows, colums, min, max) {
-    let arr = [];
-    arr.length = rows;
-    return [...arr].map(() => getArrayRandomIntNumbers(colums, min, max));
+    const sortedOccurrences = Object.entries(occurrences).sort(([keyA, valueA], [keyB, valueB]) => {
+        return valueA == valueB ? keyA.localeCompare(keyB) : valueB - valueA;
+    }).reduce((sortedObj, [key, value]) => {
+        sortedObj[key] = value;
+        return sortedObj;
+    }, {});
+    return sortedOccurrences;
 }
 
-console.log(getMatrixRandomIntNumbers(20,20,0,4))
+const arr = ["lmn", "ab", "lmn", "c", "d", "ab", "a", "a", "lmn"];
+
+console.log(displayOccurrences(arr));
+
+//  /*lmn -> 3
+//    a -> 2
+//    ab -> 2
+//    c -> 1
+//    d -> 1 */
+
+//обращение к полю объекта:
+ const y = {xx: 0}
+ console.log(y.xx)
+
+//удаление поля:
+ delete y.xx;
+
+//  function isAnagram (word, anagram) {
+//     let res = false;
+//     if(word.length == anagram.length) {
+//         if(word.toLowerCase().split("").join() === anagram.toLowerCase().split("").join) {
+//             res = true
+//         }
+//     }
+//     return res;
+//  }
+
+ //masters solution:
+ function getOccurrences (array) {
+    return array.reduce((obj, s) => ({ ...obj, [s]: obj[s] ? obj[s] + 1 : 1 }), {});
+
+ }
+ 
+ function isAnagram (word, anagram) {
+    let res = false;
+    if (word.length === anagram.length) {
+        wors = word.toLowerCase();
+        const occurrences = getOccurrences(Array.from(word));
+        res = Array.from(anagram).every(s => occurrences[s] -- > 0);
+    }
+    return res;
+ }
