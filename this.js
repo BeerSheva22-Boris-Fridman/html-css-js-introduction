@@ -48,3 +48,4 @@ console.log(JSON.stringify(rectangle1) == JSON.stringify(rectangle)); // true
 console.log(JSON.stringify(rectangle1)); // {"width":20,"height":20}
 const rectangle2 = JSON.parse(JSON.stringify(rectangle1)); // глубокая копия, весь уровень вложенности, сначала делаем строку, потом из нее объект 
 const rectangle3 = {...rectangle1}; // не глубокая копия
+
