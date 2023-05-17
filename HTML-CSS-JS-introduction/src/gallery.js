@@ -6,11 +6,17 @@ const POINT_CLASS = "point";
 const detailsSection = document.querySelector(".details-section");
 const HIDDEN = "hidden";
 
-for (let i = 0; i < thumbnailsAncors.length; i++) {
-    thumbnailsAncors[i].addEventListener("click", function(){
-        setDetails(thumbnailsAncors[i] );
-    })
-}
+// for (let i = 0; i < thumbnailsAncors.length; i++) {
+//     thumbnailsAncors[i].addEventListener("click", function(){
+//         setDetails(thumbnailsAncors[i] );
+//     })
+// }
+
+// NEW 16/05/23 
+thumbnailsAncors.forEach((anchor) =>
+    anchor.addEventListener('click', setDetails.bind(undefined, anchor)),
+);
+
 function setDetails (ancor) {
     showDetails();
     detailsImageElement.src = ancor.getAttribute("data-details-image");
