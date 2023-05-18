@@ -49,3 +49,12 @@ console.log(JSON.stringify(rectangle1)); // {"width":20,"height":20}
 const rectangle2 = JSON.parse(JSON.stringify(rectangle1)); // глубокая копия, весь уровень вложенности, сначала делаем строку, потом из нее объект 
 const rectangle3 = {...rectangle1}; // не глубокая копия
 
+let user = {}
+    user.name = 'vasja';
+    user.age = 37;
+    user.religion = 'buddizm';
+    console.log(user);
+    delete user.age
+    console.log(user);
+    
+    console.log(`${this.name}`);
