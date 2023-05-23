@@ -1,151 +1,131 @@
-// const rectangle = new Rectangle(3, 4);
-// // НОВЫЙ СИНТАКСИС:
-// class Rectangle {
-//     #width; //так задаем private поля 
-//     #height;
-//     constructor(width, height) {
-//         this.#width = width;
-//         this.#height = height;
-//     }
-//         this.square = function () {
-//             return this.width * this.height;
-//         };
-//         this.perimetr = function () {
-//             return (this.width + this.height) * 2;
-//         };
-// }
+//what's wrong
 
-
-// class Rectangle {
-//     #width;//делаем поля private
-//     #height;
-
-//     constructor(width, height) {
-//         this.#width = width;//делаем поля private
-//         this.#height = height;
-//     }
-//     square() {
-//         return this.#width * this.#height;
-//     }
-
-//     perimeter() {
-//         return (this.#width + this.#height) * 2;
-//     }
-// }
-// const rectangle = new Rectangle(3, 4);
-
-// class Square extends Rectangle{
-//     constructor(width) {
-//         super(width, width)
-//     }
-// }
-
-// const square = new Square(10);
-// console.log(square.perimeter());
-
-// Array.prototype.map = function() {
-//     console.log(this)
-//     return 'kuku'
-// };
-// const ar = [1,2,3];
-// console.log(ar.map());
-
-
-// СТАРЫЙ СИНТАКСИС:
-// function Rectangle(width, height) {//это конструктор
-//     this.width = width;
-//     this.height = height;
-//     this.square = function() {
-//         return this.width * this.height;
-//     }
-//     this.perimetr = function() {
-//         return (this.width + this.height) * 2;
-//     }
-// }
-// выносим функции из конструктора, но оставляем им this
-// Rectangle.prototype.square = function () {
-//     return this.width * this.height;
-// }
-// Rectangle.prototype.perimetr = function () {
-//     return (this.width + this.height) * 2;
-// }
-// console.log(rectangle.square())
-
-// let c;
-
-// ЧТО ТАКОЕ POTOTYPE????
-
-Array.prototype.myForEach = function (callback) {
-    for (let i = 0; i < this.length; i++) {
-        let element = this[i];
-        callback(element, i, this)
-    }
+function sleep (timeout) {
+//function sleep (timeout, ...functions) {
+    //    function sleepFn (){
+    //     functions.forEach(f => f())
+    // }
+    // setTimeout(sleepFn, timeout)
+    // }
+    return new Promise (resolve => setTimeout(() => resolve(), timeout));
 }
 
-Array.prototype.myMap = function (callback) {
-    let arr = [];
-    for (let i = 0; i < this.length; i++) {
-        arr.push(callback(this[i]))
-    }
-    return arr;
+function f1 () {
+    console.log('f1 perfomed');
 }
 
-
-Array.prototype.myFilter = function (callback) {
-    let arr = [];
-    for (let i = 0; i < this.length; i++) {
-        // if(callback == (this[i])) {
-        if (callback(this[i])) {
-            arr.push((this[i]))
-        }
-    }
-    return arr;
+function f2 () {
+    console.log('f2 perfomed');
 }
 
-Array.prototype.myReduce = function (callback, initialValue) {
-    let accumulator = initialValue;
-    let i = 0;
-    if (initialValue == undefined) {
-        accumulator = this[0];
-        i = 1;
-    }
-    for (i = 0; i < this.length; i++) {
-        accumulator = callback(accumulator, this[i], i, this);
-    }
-    return accumulator;
+function f3 () {
+    console.log('f3 perfomed');
 }
 
-const array = [1, 2, 3, 4, 5]
+const promise = sleep(2000);
+promise.then(() => f1()).then(() => f2()).then(() => f3());
 
-array.myForEach(element => {
-    console.log(element);
-});
-
-
-console.log(array.myMap(item => item * 2));
-
-console.log(array.myFilter(item => item % 2 == 0))
-
-//console.log(array.myReduce(item => item * 2));
-console.log(array.myReduce((item, i) => item + i, 's'))
-
-class Deferred {
-    ar = [];
-    then(func) {
-        this.ar.push(func);
-    }
-    resolve(el) {
-        this.ar.forEach(func => el = func(rl))
-    }
+function getId(predicate) {
+    const ids = [123, 124, 125];
+    const index = ids.findIndex(predicate);
+    return new Promise((resolve, reject) =>{
+        setTimeout(() =>{
+            return index < 0 ? reject('id not found') : resolve(ids[index]);
+        }, 1000);
+    })
 }
 
+function getCar(id) {
+    const cars = {
+        '123': 'suzuki',
+        '124': 'hunday',
+        '125': 'honda'
+    }
+    const car = cars[id];
+    return new Promise((resolve,reject) => 
+    setTimeout(() => car ? resolve(car) : reject('no car found'), 1000))
+}
 
-const d = new Deferred()
-d.then(function (res) { console.log("1 ", res); return "a"; });
-d.then(function (res) { console.log("2 ", res); return "b"; });
-d.then(function (res) { console.log("3 ", res); return "c"; });
-d.resolve('hello');
-1  hello
-2  a
-3  b
+function displayCar(id) {
+    getId(id => id % 10 == 0).then(id => getCar(id)).then(car => console.log(car))
+    .catch(error => console.log(error));
+}
+displayCar()
+displayCar(id => id == 125);
+//sleep(2000, f1, f2, f3);
 
+console.log('start');
+
+setTimeout(function() {
+    console.log("setTimeout message");
+}, 0)
+
+        console.log('hjkgkfkfkfj');
+        console.log('hjkgkfkfkfj');
+        console.log('hjkgkfkfkfj');
+
+// arrow function
+let sum = (a,b) => a+b;
+// arrow function with one argument
+let sum1 = a => a/2;
+//arrow function without arguments
+let hello = () => 'hello'
+// the same function
+let summ = function(a,b) {
+    return a+b;
+}
+
+console.log(sum(5,5));
+console.log(sum1(10));
+console.log(hello());
+
+// function ask(question, yes, no) {
+//     if (confirm(question)) yes()
+//     else no();
+//   }
+  
+//   ask(
+//     "Вы согласны?",
+//     function() { alert("Вы согласились."); },
+//     function() { alert("Вы отменили выполнение."); }
+//   );
+
+  function sayHi() {
+    return ( "Привет" );
+  }
+  
+ console.log(sayHi());; // выведет код функции
+ let copySayHi = sayHi;
+ console.log(copySayHi());
+ console.log(sayHi());
+
+ const age = 17;
+ 
+ let welcome = age < 18 ? function (){console.log(a)} : function(){console.log(b)}
+ const a = 'helloooooo'
+ const b = 'good day'
+ console.log(welcome());
+
+ function fun1  (a,b) {
+    const c = a+b;
+    return fun2(c);
+ }
+
+ function fun2(c) {
+    return c*10;
+ }
+ console.log(fun1(1,2));
+
+ let name1 = "Вася";
+function sayHi() {
+  console.log(name1);
+}
+
+setTimeout(function() {
+  let name1 = "Петя";
+  sayHi();
+}, 1000);
+
+принимаем долготу и широту, день начала
+
+fetch ()
