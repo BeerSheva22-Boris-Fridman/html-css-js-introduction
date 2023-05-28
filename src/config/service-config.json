@@ -1,0 +1,11 @@
+{
+    "baseUrl": "https://api.open-meteo.com/v1/gfs?",
+    "maxDays": 16,
+    "cities": {
+        "Rehovot": {"lat":31.89, "long":34.81}, 
+        "Jerusalem": {"lat":0, "long":0}, 
+        "Beersheba": {"lat":0, "long":0}, 
+        "Haifa": {"lat":0, "long":0},
+        "Tel Aviv": {"lat":0, "long":0}
+    }
+}
