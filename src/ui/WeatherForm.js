@@ -36,7 +36,7 @@ export default class WeatherForm {
     }
     #daysHandler() {
         //FIXME
-        this.#formData.days = this.#dateElement.value;
+        this.#formData.days = +this.#daysElement.value;
     }
     #dateHandler() {
         //FIXME
@@ -44,11 +44,11 @@ export default class WeatherForm {
     }
     #hourFromHandler() {
         //FIXME
-        this.#formData.hourFrom = this.#hourFromElement.value;
+        this.#formData.hourFrom = +this.#hourFromElement.value;
     }
     #hourToHandler() {
         //FIXME
-        this.#formData.hourTo = this.#hourToElement.value;
+        this.#formData.hourTo = +this.#hourToElement.value;
     }
     //FIXME
     #setHandlers() {

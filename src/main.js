@@ -32,12 +32,13 @@ const table = new DataGrid("table-place", columns);
 // hourFrom, hourTo).then(data => table.fillData(data));
 
 //---------------------------------------------------------------------------------------------------
-
+const form = new WeatherForm("form-place", Object.keys(openMeteoConfig.cities), openMeteoConfig.maxDays);
 // Создаю функцию, которая будет возвращать промис после отправки формы
 function submitForm() {
-    return new Promise((resolve, reject) => {
+
+    return new Promise((resolve) => {
       // Внутри промиса создаю экземпляр WeatherForm
-      const form = new WeatherForm("form-place", Object.keys(openMeteoConfig.cities), openMeteoConfig.maxDays);
+      
   
       // Получаю данные из формы после отработки события нажатия кнопки 
       form.onSubmit((formData) => {
@@ -47,14 +48,22 @@ function submitForm() {
   }
   
   // Вызоваю функцию submitForm и вытаскиваю нужные значения из форм дата, чтобы передать их в гетТемперачерс
-  submitForm().then((formData) => {
+  async function run () {
+     while (true) {
+    const formData = await submitForm()
     // Используйте formData для вызова openMeteoService.getTemperatures
     const latLong = openMeteoConfig.cities[formData.city];
     const { lat, long } = latLong;
     const { startDate, days, hourFrom, hourTo } = formData;
   
-    openMeteoService
+    const data = await openMeteoService
       .getTemperatures(lat, long, startDate, getEndDate(startDate, days), hourFrom, hourTo)
-      .then((data) => table.fillData(data));
-  });
+      table.fillData(data);
+  };
+  }
+
+  run();
+ 
+  
+  
 
