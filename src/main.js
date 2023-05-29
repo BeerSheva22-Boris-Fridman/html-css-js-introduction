@@ -45,24 +45,22 @@ function submitForm() {
         resolve(formData); // передаю в ресолв данные из формы
       });
     });
-  }
-  
+  } 
   // Вызоваю функцию submitForm и вытаскиваю нужные значения из форм дата, чтобы передать их в гетТемперачерс
   async function run () {
      while (true) {
     const formData = await submitForm()
-    // Используйте formData для вызова openMeteoService.getTemperatures
     const latLong = openMeteoConfig.cities[formData.city];
     const { lat, long } = latLong;
     const { startDate, days, hourFrom, hourTo } = formData;
-  
     const data = await openMeteoService
       .getTemperatures(lat, long, startDate, getEndDate(startDate, days), hourFrom, hourTo)
       table.fillData(data);
   };
   }
-
   run();
+
+  // ДОБАВИТЬ КОД ЮРИЯ!!!!!!!!!! ОТ 29/05/23
  
   
   

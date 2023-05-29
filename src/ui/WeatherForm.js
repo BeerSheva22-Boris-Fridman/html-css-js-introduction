@@ -108,7 +108,7 @@ export default class WeatherForm {
     onSubmit(callback) {
         this.#formElement.onsubmit = (event) => {
           event.preventDefault();
-          callback(this.#formData); // Вызовите callback с данными формы
+          callback(this.#formData); 
         };
       }
 
