@@ -7,12 +7,20 @@ export default class DataGrid {
       this.#keys = columns.map(column => column.field);
       this.#buildTableHeader(parentId, columns.map(column => column.headerName))
     }
+
     fillData(rowsData) {
         const tableRows = rowsData.map((rowData) => {
-            const cells = this.#keys.map(fieldName => `<td>${rowData[fieldName]}</td>`).join('');
-         //   const rowClass = index %  2 == 0 ? 'evenRow' : 'oddRow';
-            const rowClass = rowData.date.slice(-1)%2 == 0 ? 'evenRow' : 'oddRow';
-            return `<tr class ="${rowClass}">${cells}</tr>`;
+            const cells = this.#keys.map(fieldName => {
+                // Проверяем, если поле fieldName равно 'poster_path', то вместо обычного текста вставляем тег img
+                if (fieldName === 'poster_path') {
+                    const imageUrl = "https://image.tmdb.org/t/p/w500/" + rowData[fieldName];
+                    return `<td><img src="${imageUrl}" alt="Movie Poster" style="width: 100px;"></td>`;
+                } else {
+                    return `<td>${rowData[fieldName]}</td>`;
+                }
+            }).join('');
+
+            return `<tr>${cells}</tr>`;
         });
         this.#tBodyElement.innerHTML = tableRows.join('');
     }

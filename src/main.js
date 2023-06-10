@@ -1,67 +1,55 @@
-import openMeteoConfig from "./config/service-config.json" assert {type: 'json'};
-import OpenMeteoService from "./service/openMeteoService.js";
-import DataGrid from "./ui/DataGrid.js";
-import WeatherForm from "./ui/WeatherForm.js";
-import {getISODateSTR, getEndDate} from "./util/date-functions.js"
+import DataGrid from './ui/DataGrid.js';
+import ApplicationBar from './ui/ApplicationBar.js';
+import RegistrationForm from './ui/RegistrationForm.js';
+import MoviesDataService from './service/MoviesDataService.js';
 
-//constants defenitio
-const columns = [
-    {field: 'date', headerName: 'Date'},
-    {field: 'time', headerName: 'Time'},
-    {field: 'temperature', headerName: 'Temperature'},
-    {field: 'apparentTemperature', headerName: 'Fealt temp'}
+const sections = [
+   
+    {title: "Search", id: "serch-form-place"},
+    {title: "favorites", id: "favorites-list-place"},
+    {title: "wish list", id: "wish-list-place"},
+    {title: "Sign in", id: "registration-form-place"},
+    {title: "Log in", id: "logIn-form-place"},
+    {title: "Log out", id: "main-place"}
 ];
 
-// const fromFormData = {
-// city: 'Rehovot',
-// startDate: getISODateSTR(new Date()),
-// days: 5, 
-// hourFrom: 12, 
-// hourTo: 14
-// };
+const menu = new ApplicationBar('menu-place', sections);
+const regForm = new RegistrationForm('registration-form-place');
 
-// //objects
-// const form = new WeatherForm("form-place", Object.keys(openMeteoConfig.cities), openMeteoConfig.maxDays);
-const openMeteoService = new OpenMeteoService(openMeteoConfig.baseUrl);
-const table = new DataGrid("table-place", columns);
-// const latLong = openMeteoConfig.cities[fromFormData.city];
-// const {lat, long} = latLong; //destructuring of the object
-// const {startDate, days, hourFrom, hourTo} = fromFormData;
-// //const startDate = WeatherForm.#dateElement
-// openMeteoService.getTemperatures(lat, long, startDate, getEndDate(startDate, days), 
-// hourFrom, hourTo).then(data => table.fillData(data));
 
-//---------------------------------------------------------------------------------------------------
-const form = new WeatherForm("form-place", Object.keys(openMeteoConfig.cities), openMeteoConfig.maxDays);
-// Создаю функцию, которая будет возвращать промис после отправки формы
-function submitForm() {
+document.addEventListener('DOMContentLoaded', function () {
+    fetchMovies();
+});
 
-    return new Promise((resolve) => {
-      // Внутри промиса создаю экземпляр WeatherForm
-      
-  
-      // Получаю данные из формы после отработки события нажатия кнопки 
-      form.onSubmit((formData) => {
-        resolve(formData); // передаю в ресолв данные из формы
-      });
-    });
-  } 
-  // Вызоваю функцию submitForm и вытаскиваю нужные значения из форм дата, чтобы передать их в гетТемперачерс
-  async function run () {
-     while (true) {
-    const formData = await submitForm()
-    const latLong = openMeteoConfig.cities[formData.city];
-    const { lat, long } = latLong;
-    const { startDate, days, hourFrom, hourTo } = formData;
-    const data = await openMeteoService
-      .getTemperatures(lat, long, startDate, getEndDate(startDate, days), hourFrom, hourTo)
-      table.fillData(data);
-  };
-  }
-  run();
+function fetchMovies() {
+    fetch('https://api.themoviedb.org/3/movie/popular?api_key=2c46288716a18fb7aadcc2a801f3fc6b')
+        .then(response => response.json())
+        .then(data => populateMovies(data.results))
+        .catch(error => console.error('Error:', error));
+}
 
-  // ДОБАВИТЬ КОД ЮРИЯ!!!!!!!!!! ОТ 29/05/23
+function populateMovies(movies) {
  
-  
-  
+    const moviesTable = new DataGrid("main-place", [
+        {field: 'title', headerName: 'Title'},
+        {field: 'poster_path', headerName:'Poster'},
+        // {field: 'overview', headerName: 'Overview'},
+        {field: 'id', headerName: 'Popularity'}
+    ]);
+    moviesTable.fillData(movies);
+}
+
+const form = new RegistrationForm('registration-form-place'); 
+
+form.buttonHasPressed()
+    .then(() => {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        const service = new MoviesDataService();
+        return service.registerUser(username, password);
+    })
+    .catch(error => {
+        alert(error.message);
+    });
 
