@@ -29,12 +29,12 @@ function fetchMovies() {
 }
 
 function populateMovies(movies) {
- 
+ console.log(movies);
     const moviesTable = new DataGrid("main-place", [
         {field: 'title', headerName: 'Title'},
         {field: 'poster_path', headerName:'Poster'},
         // {field: 'overview', headerName: 'Overview'},
-        {field: 'id', headerName: 'Popularity'}
+        {field: 'vote_average', headerName: 'vote_average'}
     ]);
     moviesTable.fillData(movies);
 }

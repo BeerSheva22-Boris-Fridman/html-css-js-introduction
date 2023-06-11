@@ -1,11 +1,7 @@
 {
-    "baseUrl": "https://api.open-meteo.com/v1/gfs?",
-    "maxDays": 16,
-    "cities": {
-        "Rehovot" : {"lat": 31.89, "long": 34.81},
-        "Jerusalem" : {"lat": 31.77, "long": 35.22},
-        "Beersheba" : {"lat": 31.25, "long": 34.79},
-        "Haifa": {"lat": 32.82, "long": 34.99},
-        "Tel_Aviv": {"lat": 32.08, "long": 34.78}
-    }
+    "baseUrl": "https://api.themoviedb.org/3/movie/",
+    "baseImgUrl": "https://image.tmdb.org/t/p/w500/",
+    "key": "&api_key=2c46288716a18fb7aadcc2a801f3fc6b",
+    "genreUrl": "https://api.themoviedb.org/3/genre/movie/list?language=en",
+    "filterUrl": "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false" 
 }
