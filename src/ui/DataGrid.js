@@ -1,6 +1,7 @@
 export default class DataGrid {
     #tBodyElement
     #keys
+    #data
     constructor(parentId, columns) {
         //colums -array of objects {field : <name of key>, 
         //header name: <column name>}
@@ -23,9 +24,17 @@ export default class DataGrid {
             return `<tr>${cells}</tr>`;
         });
         this.#tBodyElement.innerHTML = tableRows.join('');
+        
     }
     
-
+    addClickListener(callback) {
+        this.#tBodyElement.addEventListener('click', (event) => {
+          const clickedRowIndex = event.target.closest('tr').rowIndex - 1;
+          const clickedMovie = this.#data[clickedRowIndex];
+          callback(clickedMovie);
+        });
+      }
+      
     
     #buildTableHeader(parentId, columnNames) {
         const tableSectionElement = document.getElementById(parentId);
