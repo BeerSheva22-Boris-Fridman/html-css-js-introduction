@@ -1,3 +1,4 @@
+
 import DataGrid from './ui/DataGrid.js';
 import ApplicationBar from './ui/ApplicationBar.js';
 import RegistrationForm from './ui/RegistrationForm.js';
@@ -15,7 +16,7 @@ const sections = [
 
 const menu = new ApplicationBar('menu-place', sections);
 const regForm = new RegistrationForm('registration-form-place');
-const movieDetails = new MovieDetails('movie-details');
+const movieDetails = new MovieDetails('movie-details-table-place');
 
 document.addEventListener('DOMContentLoaded', function () {
   fetchMovies();
@@ -37,8 +38,30 @@ function populateMovies(movies) {
   ]);
   moviesTable.fillData(movies);
 
-  moviesTable.addClickListener(movie => {
-    movieDetails.displayMovieDetails(movie);
+  // moviesTable.addClickListener(movie => {
+  //   movieDetails.displayMovieDetails(movie);
+  // });
+
+  function rowClickCallback(event) {
+    // Get the clicked row
+    const clickedRow = event.currentTarget;
+
+    // Access the data associated with the clicked row
+    const rowData = clickedRow.dataset.movieData;
+
+    // Perform any desired actions with the rowData
+    console.log('Clicked row data:', rowData);
+    movieDetails.displayMovieDetails(rowData);
+    const mainPlace = document.getElementById('main-place');
+    mainPlace.style.display = 'none';
+    const movieTable = document.getElementById('movie-details-table-place');
+    movieTable.style.display = 'block';
+  }
+
+// Add the callback function to the click event of the table rows
+  const tableRows = document.querySelectorAll('tr');
+  tableRows.forEach(row => {
+    row.addEventListener('click', rowClickCallback);
   });
 }
 

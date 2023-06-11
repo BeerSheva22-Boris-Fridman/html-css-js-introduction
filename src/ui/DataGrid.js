@@ -21,10 +21,16 @@ export default class DataGrid {
                 }
             }).join('');
 
-            return `<tr>${cells}</tr>`;
+            const row = document.createElement('tr');
+            row.innerHTML = cells;
+            row.setAttribute('data-movie-data', JSON.stringify(rowData));
+            return row;
         });
-        this.#tBodyElement.innerHTML = tableRows.join('');
-        
+
+        this.#tBodyElement.innerHTML = '';
+        tableRows.forEach(row => {
+            this.#tBodyElement.appendChild(row);
+        });
     }
     
     addClickListener(callback) {

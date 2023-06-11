@@ -4,6 +4,7 @@ export default class MovieDetails {
     }
   
     displayMovieDetails(movie) {
+      movie = JSON.parse(movie);
       const imageUrl = "https://image.tmdb.org/t/p/w500/" + movie.poster_path;
       const movieDetailsElement = document.getElementById(this.parentId);
       const movieDetails = `
