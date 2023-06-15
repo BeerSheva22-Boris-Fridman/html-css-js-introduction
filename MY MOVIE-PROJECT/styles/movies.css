@@ -1,0 +1,28 @@
+
+
+.active {
+  color: white;
+  background-color: chocolate;
+}
+#header {
+  height: 15vh;
+  overflow: hidden;
+}
+
+#content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#content img {
+  width: auto;
+  height: auto;
+}
+
+.title{
+  text-decoration: none;
+}
+.title:visited {
+  color: inherit;
+}
