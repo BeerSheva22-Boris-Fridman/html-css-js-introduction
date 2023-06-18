@@ -17,7 +17,7 @@ export default class DataGrid {
       this.#movies = [];    //массив с карточками фильмов
    }
 //
-   #buildMoviePlace(moviesPlaceId){ //метод просто создает переменную в которой храниться элемент в котором будут размещены фильмы
+   #buildMoviePlace(){ //метод просто создает переменную в которой храниться элемент в котором будут размещены фильмы
       this.#moviesPlace = document.getElementById(this.#parentId);
    }
    //отрисовка названия страницы, данный метод будет вызываться в методе fillMovies,
@@ -74,10 +74,14 @@ export default class DataGrid {
       })
    }
 
-   #movieCardHendler(id) {
+   #movieCardHendler(cardId) {
       document.getElementById(`${this.#moviesPlaceId}-place`).style = 'none';
-      this.#moviesCallback(id);
+      this.#moviesCallback(cardId);
    }
-
+   
+   showHomePage(){
+   
+       document.getElementById(`movies-page-place`).style.display = 'flex';  
+   }
 
 }

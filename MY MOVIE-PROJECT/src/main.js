@@ -213,3 +213,5 @@ async function action(serviceFn) {
 //   document.getElementById('movies-page-place').hidden = false;
 // }
 // startHomePage();
+getPopularMovies(FIRST_PAGE)
+moviesGrid.showHomePage();
