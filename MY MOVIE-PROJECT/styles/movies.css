@@ -57,6 +57,8 @@
     color: white;
 }
 
+
+
 /* menu buttons */
 .menu-button, .reg-button {
   background-color: #f8f8f8; /* light gray */
@@ -197,6 +199,40 @@
 
 /* Movies */
 
+#movies-page-place {
+  position: sticky;
+  border-bottom: 1px solid #ccc; /* Add a border at the bottom of the title */
+  position: relative;
+  margin: 0 40px;
+ 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5; /* Add a light gray background */
+  border-radius: 15px; /* Add some roundness to the corners */
+  padding: 20px; /* Add some padding to the whole section */
+}
+
+#movies-page-title {
+  position: sticky;
+  border-bottom: 1px solid #ccc; /* Add a border at the bottom of the title */
+  top: 0;
+  width: 100%;
+  background: #f8f8f8; /* Change background color to a lighter gray */
+  text-align: center;
+  color: #333; /* Set text color to a darker gray */
+  font-size: 2em; /* Increase font size */
+  padding: 10px 0; /* Add some vertical padding to the title */
+}
+
+#movies-place {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Add some gap between the movies */
+}
 
 
 /* spinner ... */
@@ -266,5 +302,117 @@
   z-index: 100000;
 }
 
+/* Details section */
+
+#movie-details-table-place {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+}
+
+.movie-details-table-place-img img {
+  width: 200px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.movie-details-table-place-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  width: 100%;
+}
+
+.movie-details-table-place-title {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.movie-details-table-place-tagline {
+  color: #666;
+  font-size: 1.5em;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.movie-details-table-place-genres,
+.movie-details-table-place-budget,
+.movie-details-table-place-raiting {
+  color: #333;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.movie-details-table-place-overview {
+  color: #333;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.movie-details-table-place-button {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.movie-details-table-place-button:hover {
+  background-color: #45a049;
+}
+
+/* Movie card */
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f8f8; /* Light gray */
+  border-radius: 15px; /* Rounded borders */
+  margin: 10px; /* Add some margin */
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Add some shadow */
+  padding: 10px; /* Add some padding */
+  transition-duration: 0.4s; /* Add transition effect */
+  width: 250px; /* Set a fixed width */
+  height: 460px; /* Set a fixed height */
+
+}
+
+.movie-card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card when hovering over it */
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2); /* Increase the shadow when hovering over the card */
+}
+
+.movie-card-img {
+  width: 100%; /* Make the image take the full width of the card */
+  border-radius: 15px; /* Rounded borders for the image */
+}
+
+.film-card-title {
+  font-size: 1.2em; /* Adjust to your needs */
+  font-weight: 600; /* Adjust to your needs */
+  color: #333; /* Dark gray */
+  margin: 10px 0; /* Add some margin */
+  text-align: center; /* Center the text */
+  width: 100%; /* Full width */
+
+  height: 3.6em; /* Adjust to your needs - for example, '1.2em' font-size x 3 lines */
+}
+
+
+
+.film-card-date {
+  text-align: center;
+  font-size: 0.9em; /* Slightly smaller font size for the date */
+  color: #666; /* Light gray color for the date */
+}
 
 

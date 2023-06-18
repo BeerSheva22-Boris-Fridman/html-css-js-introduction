@@ -38,11 +38,12 @@ export default class RegMenuBar {
         if (this.#activeIndex != undefined) {
             this.#regMenuButtons[this.#activeIndex].classList.remove('active');
             console.log(this.#activeIndex);
-            this.#setSectionsElement[this.#activeIndex].style.display = 'none';
+            this.#sectionElements[this.#activeIndex].style.display = 'none';
+            
             
         }
 
-        // console.log(document.getElementById(this.#hiddenElements[2]));
+        
         this.#hiddenElements.forEach(element => document.getElementById(element).style.display = 'none');
         this.#regMenuButtons[index].classList.add('active');
         await this.#callback(index);
@@ -53,10 +54,12 @@ export default class RegMenuBar {
     logIn() {
         this.#regMenuButtons.map(button => button.hidden? button.hidden = false : button.hidden = true);
         document.getElementById("regLog-form-place").style.display = 'none';
+        document.getElementById('movies-page-place').style.display = 'flex';
     }
 
     logOut() {
         this.#regMenuButtons.map(button => button.hidden? button.hidden = false : button.hidden = true); 
+        document.getElementById('movies-page-place').style.display = 'flex';
     }
 
 }

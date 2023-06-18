@@ -15,7 +15,7 @@ export default class RegLogForm {
         <form class = 'reg-log-form' id = '${this.#parentId}-form'>
             <input type = 'text' class = 'form-input' placeholder = 'Enter user name' name = 'userName' required>
             <input  type = 'password' class = 'form-input' placeholder = 'Enter password' name = 'password' required>
-            <button id = '${this.#parentId}-submit' class = 'submit-button'>registr & log in</button>
+            <button id = '${this.#parentId}-submit' class = 'submit-button'>Submit</button>
         </form>
         `;
         const formElement = document.getElementById(`${this.#parentId}-form`);
