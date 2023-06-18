@@ -37,7 +37,9 @@ export default class RegMenuBar {
         // проверяю если кнопка
         if (this.#activeIndex != undefined) {
             this.#regMenuButtons[this.#activeIndex].classList.remove('active');
+            console.log(this.#activeIndex);
             this.#setSectionsElement[this.#activeIndex].style.display = 'none';
+            
         }
 
         // console.log(document.getElementById(this.#hiddenElements[2]));

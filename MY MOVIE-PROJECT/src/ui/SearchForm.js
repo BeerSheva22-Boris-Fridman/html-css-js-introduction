@@ -20,16 +20,16 @@ export default class SearchForm{
         <h2 class = '${this.#parentId}-title'> Searching Page</h2>
 
             <form class='form-control' id ='${this.#parentId}-form'>
-                <input class = ${INPUT_CLASS} name = 'company' placeholder = 'Movie Company'>
-                <label for = 'company' class = 'input-label'>Add one or several companies using "," </label>
-                <select id = '${this.#parentId}-genres' class = ${INPUT_CLASS} name = 'genre'></select>
-                <label for = 'company' class = 'input-label'>Choose genre </label>
-                <input type ='number' class = ${INPUT_CLASS} placeholder = 'Year' name = 'year'>
-                <label for = 'year' class = 'input-label'>Chose year from 1900 to nowadays</label>
-                <button id = '${this.#parentId}-submit' type = 'submit' class = 'submit-button'>Search</button>
+            <select id = '${this.#parentId}-genres' class = ${INPUT_CLASS} name = 'genre'></select>
+            <label for = 'company' class = 'input-label'>Choose genre </label>
+            <input type ='number' class = ${INPUT_CLASS} placeholder = 'Year' name = 'year'>
+            <label for = 'year' class = 'input-label'>Chose year from 1900 to nowadays</label>
+            <button id = '${this.#parentId}-submit' type = 'submit' class = 'submit-button'>Search</button>
             </form>
             `;
-
+            
+            // <input class = ${INPUT_CLASS} name = 'company' placeholder = 'Movie Company'>
+            // <label for = 'company' class = 'input-label'>Add one or several companies using "," </label>
         this.#selectElement = document.getElementById(`${this.#parentId}-genres`)
         this.#setOptions(genres);
         const formElement = document.getElementById(`${this.#parentId}-form`);

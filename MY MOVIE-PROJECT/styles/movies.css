@@ -1,64 +1,270 @@
-/* Общие стили */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  /* Секции */
-  section {
-    margin-bottom: 20px;
-  }
-  
-  #title-place {
-    background-color: #f0f0f0;
-    padding: 10px;
-  }
-  
-  #menu-place {
-    background-color: #f0f0f0;
-    padding: 10px;
-  }
-  
+/* Section */
+#title-place {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: #4CAF50; /* change this to match your site's color scheme */
+}
+
+/* Title */
+#title-place h1 {
+  font-size: 2.5em;
+  color: white; /* change this to contrast with your background color */
+  font-family: Arial, sans-serif; /* choose a font that matches your site's design */
+}
+
+/* Link */
+#title-place a {
+  color: white; /* change this to contrast with your background color */
+  text-decoration: none; /* removes the underline */
+}
+
+#title-place a:hover {
+  color: #ddd; /* change this to a color that will indicate interactivity to your users */
+}
+
 
   
-  /* Карточки фильмов */
-  .movie-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+   /* paginator */
+
+  .page-button {
+    background-color: #f8f8f8; /* light gray */
+    color: #000; /* black */
+    border: none;
+    cursor: pointer;
     padding: 10px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-  }
-  
-  .movie-card-img {
-    width: 200px;
-    height: 300px;
-    object-fit: cover;
-  }
-  
-  .film-card-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  .film-card-date {
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
-  /* Прочие элементы */
-  #spinner {
-    /* Стили для спиннера */
-  }
-  
-  #black {
-    /* Стили для черного фона */
-  }
-  
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s; /* transition effect */
+}
+
+.page-button:hover {
+    background-color: #ddd; /* on hover color */
+    color: black;
+}
+
+.page-button:disabled {
+    background-color: #ddd; /* disabled button color */
+    color: #aaa; /* gray */
+    cursor: not-allowed;
+}
+
+.page-active {
+    background-color: #4CAF50; /* green */
+    color: white;
+}
+
+/* menu buttons */
+.menu-button, .reg-button {
+  background-color: #f8f8f8; /* light gray */
+  color: #000; /* black */
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s; /* transition effect */
+}
+
+.menu-button:hover, .reg-button:hover {
+  background-color: #ddd; /* on hover color */
+  color: black;
+}
+
+.menu-button:disabled, .reg-button:disabled {
+  background-color: #ddd; /* disabled button color */
+  color: #aaa; /* gray */
+  cursor: not-allowed;
+}
+
+.menu-button.active, .reg-button.active {
+  background-color: #4CAF50; /* green */
+  color: white;
+}
+
+/* RegLogForm */
+
+#regLog-form-place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+}
+
+.page-title {
+  text-align: center;
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.reg-log-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+#regLog-form-place-submit {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+#regLog-form-place-submit:hover {
+  background-color: #45a049;
+}
+
+
+/* Search form */
+
+#serch-form-place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+.serch-form-place-title {
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form-input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.input-label {
+  align-self: flex-start;
+  margin-left: 10px;
+  color: #888;
+  font-size: 0.9em;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+/* Movies */
+
+
+
+/* spinner ... */
+
+#spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 6px solid #4CAF50; /* Changed to match button color */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+  display: none;
+  z-index: 20000000;
+}
+
+#modal-message-place {
+  position: fixed;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc; /* Changed to a softer color */
+  padding: 25px 50px;
+  z-index: 200;
+  border-radius: 15px;
+  background-color: #f5f5f5; /* Changed to match the other form */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-text {
+  margin: 25px 0;
+  font-size: 1.2em; /* Made the text a bit larger */
+  color: #333; /* Made the color softer */
+}
+
+.modal-btn {
+  cursor: pointer;
+  padding: 0.3em 2em;
+  border-radius: 15px;
+  background-color: #4CAF50; /* Matched the other button colors */
+  color: white; /* Made the text color white for contrast */
+  font-size: 1em; /* Made the text a bit larger */
+}
+
+.modal-btn:hover {
+  background-color: #45a049; /* Made the hover color match the other hover colors */
+  color: white;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#black {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  z-index: 100000;
+}
+
+
+
