@@ -1,28 +1,64 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  /* Секции */
+  section {
+    margin-bottom: 20px;
+  }
+  
+  #title-place {
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+  
+  #menu-place {
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+  
 
-
-.active {
-  color: white;
-  background-color: chocolate;
-}
-#header {
-  height: 15vh;
-  overflow: hidden;
-}
-
-#content {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-#content img {
-  width: auto;
-  height: auto;
-}
-
-.title{
-  text-decoration: none;
-}
-.title:visited {
-  color: inherit;
-}
+  
+  /* Карточки фильмов */
+  .movie-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .movie-card-img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  .film-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .film-card-date {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Прочие элементы */
+  #spinner {
+    /* Стили для спиннера */
+  }
+  
+  #black {
+    /* Стили для черного фона */
+  }
+  

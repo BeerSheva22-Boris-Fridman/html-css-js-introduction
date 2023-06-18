@@ -3,7 +3,7 @@ export default class MovieMenuBar {
     #movieMenuButtons; //array of buttons
     #favoritesButton;
     #wishListButton;
-    #sectionElements; // array of element that will be opent when buttons wil be pressed
+    #sectionsElements; // array of element that will be opent when buttons wil be pressed
     #activeIndex;
     #hiddenElements;
     #callback
@@ -28,7 +28,7 @@ export default class MovieMenuBar {
     }
 // создаю массив элементов которые должны открывать кнопки
     #setSectionsElement(sectionIds) {
-        this.#sectionElements = sectionIds.map(id => document.getElementById(id));
+        this.#sectionsElements = sectionIds.map(id => document.getElementById(id));
     }
 
     #addListeners() {
@@ -38,19 +38,21 @@ export default class MovieMenuBar {
     }
 
     async #handler(index) {
+        //console.log(index);
         // проверяю если кнопка
         if (this.#activeIndex != undefined) {
             this.#movieMenuButtons[this.#activeIndex].classList.remove('active');
-            this.#setSectionsElement[this.#activeIndex].style.display = 'none';
+            this.#sectionsElements[this.#activeIndex].style.display = 'none';
         }
         this.#hiddenElements.forEach(element => document.getElementById(element).style.display = 'none');
         this.#movieMenuButtons[index].classList.add('active');
         await this.#callback(index);
-        this.#sectionElements[index].style.display = 'flex';
+        this.#sectionsElements[index].style.display = 'flex';
         this.#activeIndex = index;
     }
     
     logIn() {
+        console.log(this.#wishListButton);
         this.#wishListButton.hidden = false;
         this.#favoritesButton.hidden = false;
     }

@@ -1,8 +1,6 @@
  
 export default class RegMenuBar {
     #regMenuButtons; //array of buttons
-    #favoritesButton;
-    #wishListButton;
     #sectionElements; // array of element that will be opent when buttons wil be pressed
     #activeIndex;
     #hiddenElements;
@@ -13,6 +11,7 @@ export default class RegMenuBar {
         this.#addListeners();
         this.#hiddenElements = hiddenElements; // сохраняю значение в свойствах экземпляра класса, чтобы иметь доступ к ним в любом методе и не передавать в аргументах
         this.#callback = callback; // это функция regMenuHandler из мейна
+        document.getElementById('log-out').hidden = true
     }
 //создаю кнопки
     #fillButtons(parentId, titles) {
@@ -28,6 +27,7 @@ export default class RegMenuBar {
     }
 
     #addListeners() {
+        this.#regMenuButtons = Array.from(this.#regMenuButtons)
         this.#regMenuButtons.forEach((button, index) => {
             button.addEventListener('click', this.#handler.bind(this, index))    
         });
@@ -39,6 +39,8 @@ export default class RegMenuBar {
             this.#regMenuButtons[this.#activeIndex].classList.remove('active');
             this.#setSectionsElement[this.#activeIndex].style.display = 'none';
         }
+
+        // console.log(document.getElementById(this.#hiddenElements[2]));
         this.#hiddenElements.forEach(element => document.getElementById(element).style.display = 'none');
         this.#regMenuButtons[index].classList.add('active');
         await this.#callback(index);
@@ -48,7 +50,7 @@ export default class RegMenuBar {
     
     logIn() {
         this.#regMenuButtons.map(button => button.hidden? button.hidden = false : button.hidden = true);
-        document.getElementById("logIn-form-place").style.display = 'none';
+        document.getElementById("regLog-form-place").style.display = 'none';
     }
 
     logOut() {

@@ -1,48 +1,41 @@
-const genreList = {
-    28: 'Action',
-    12: 'Adventure',
-    16: 'Animation',
-    35: 'Comedy',
-    80: 'Crime',
-    99: 'Documentary',
-    18: 'Drama',
-    10751: 'Family',
-    14: 'Fantasy',
-    36: 'History',
-    27: 'Horror',
-    10402: 'Music',
-    9648: 'Mystery',
-    10749: 'Romance',
-    878: 'Science Fiction',
-    10770: 'TV Movie',
-    53: 'Thriller',
-    10752: 'War',
-    37: 'Western'
-  };
+export default class MovieDataService {
+    #apiKey;
+    #baseUrl;
+    #genresUrl
+    #searchUrl
 
-export default class MoviesDataService {
-    registerUser(username, password) {
-        return new Promise((resolve, reject) => {
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            
-            // Проверка на существование пользователя с тем же именем
-            const userExists = users.find(user => user.username === username);
-            if (userExists) {
-                reject(new Error('User already exists'));
-            } else {
-                const newUser = { 
-                    username, 
-                    password,
-                    wishList: [], 
-                    favorites: []
-                };
-
-                users.push(newUser);
-                localStorage.setItem('users', JSON.stringify(users));
-                
-                resolve(newUser);
-            }
-        });
+    constructor (baseUrl, apiKey, genresUrl, searchUrl) {
+        this.#apiKey = apiKey;
+        this.#baseUrl = baseUrl;
+        this.#genresUrl = genresUrl;
+        this.#searchUrl = searchUrl;
     }
-}
 
+    async getMovies (moviesType, page, errorMessage) {
+        const response = await fetch(this.#baseUrl + moviesType + page + this.#apiKey)
+        if (response.ok) {
+           
+            return await response.json();
+            
+        } else {
+            response.json().then(responseData => errorMessage(responseData.errors))
+        }
+    }
+
+    async getMovieInfo(movieId) {
+        const response = await fetch(this.#baseUrl + '/' + movieId + '?language=en-US' + this.#apiKey)
+        return response.json();
+    }
+
+    async getGenres() {
+        const response = await fetch(this.#genresUrl + this.#apiKey);
+        return response.json();
+    }
+
+    async searchMovies (searchedDataObj, page) {
+        const parameters = `page=${page}${searchedDataObj.year != ''? `&primary_release_year=${searchedDataObj.year}`:''}${searchedDataObj.genre != ''? `&with_genres=${searchedDataObj.genre}`:''}${searchedDataObj.company? `&with_companies=${searchedDataObj.company}`: ''}&sort_by=popularity.desc${this.#apiKey}`;
+        const response = await fetch(this.#searchUrl + parameters);
+        return response.json();
+    }
+
+}

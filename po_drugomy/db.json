@@ -1,0 +1,103 @@
+{
+  "users": [
+    {
+      "userName": "sss",
+      "password": "sss",
+      "favoriteList": [
+        298618,
+        569094,
+        278,
+        536437
+      ],
+      "wishList": [
+        298618,
+        385687
+      ],
+      "id": 1
+    },
+    {
+      "userName": "ss",
+      "password": "ss",
+      "favoriteList": [],
+      "wishList": [],
+      "id": 2
+    },
+    {
+      "userName": "123",
+      "password": "123",
+      "favoriteList": [],
+      "WishList": [],
+      "id": 3
+    },
+    {
+      "userName": "s",
+      "password": "s",
+      "favoriteList": [],
+      "WishList": [],
+      "id": 4
+    },
+    {
+      "userName": "q",
+      "password": "q",
+      "favoriteList": [],
+      "WishList": [],
+      "id": 5
+    },
+    {
+      "userName": "w",
+      "password": "w",
+      "favoriteList": [],
+      "WishList": [],
+      "id": 6
+    },
+    {
+      "userName": "a",
+      "password": "a",
+      "favoriteList": [],
+      "WishList": [],
+      "id": 7
+    },
+    {
+      "userName": "r",
+      "password": "r",
+      "favoriteList": [],
+      "WishList": [],
+      "id": 8
+    },
+    {
+      "userName": "qqq",
+      "password": "qqq",
+      "favoriteList": [],
+      "WishList": [],
+      "id": 9
+    },
+    {
+      "userName": "z",
+      "password": "z",
+      "favoriteList": [],
+      "WishList": [],
+      "id": 10
+    },
+    {
+      "userName": "f",
+      "password": "f",
+      "favoriteList": [],
+      "WishList": [],
+      "id": 11
+    },
+    {
+      "userName": "2",
+      "password": "2",
+      "favoriteList": [],
+      "WishList": [],
+      "id": 12
+    },
+    {
+      "userName": "3",
+      "password": "3",
+      "favoriteList": [],
+      "WishList": [],
+      "id": 13
+    }
+  ]
+}
